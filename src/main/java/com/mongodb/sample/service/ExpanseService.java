@@ -36,9 +36,13 @@ public class ExpanseService {
 	}
 	
 	public Expanse getExpanseByName(String name) {
-		Expanse expanse = expanseRepository.findByName(name)
+		Expanse expanse = expanseRepository.findByNameAlternative(name)
 				.orElseThrow(() -> new RuntimeException("Expanse not found by given name "+ name));
 		return expanse;
+	}
+	
+	public List<Expanse> findByName(String name) {
+		return expanseRepository.findByName(name);
 	}
 	
 	public Expanse getExpanseById(String id) {

@@ -50,6 +50,11 @@ public class ExpanseController {
 		return expanseService.getExpanseByName(name);
 	}
 	
+	@GetMapping("/byName/{name}")
+	public List<Expanse> findExpanseByName(@PathVariable("name") String name) {
+		return expanseService.findByName(name);
+	}
+	
 	@GetMapping("info")
 	public String getInfo() {
 		return "Expanse Api information";

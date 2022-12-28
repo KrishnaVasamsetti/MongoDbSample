@@ -20,7 +20,9 @@ public class Expanse {
 	
 	@Field(name = "amount")
 	private BigDecimal amount;
-
+	
+	public Expanse() {
+	}
 
 	public Expanse(String id, String name, ExpanseCategory category, BigDecimal amount) {
 		this.id = id;
