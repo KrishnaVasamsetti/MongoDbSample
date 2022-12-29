@@ -1,6 +1,7 @@
 package com.mongodb.sample.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mongodb.sample.model.Photo;
+import com.mongodb.sample.model.PhotoInfo;
 import com.mongodb.sample.repository.PhotoRepository;
 
 @Service
@@ -27,6 +29,15 @@ public class PhotoService {
 	public Photo downloadPhoto(String id) {
 		Photo photo = photoRepository.findById(id).get();
 		return photo;
+	}
+
+	public List<PhotoInfo> getAllPhotoDetails() {
+		List<PhotoInfo> allPhotos = photoRepository.findAll().stream().map(item -> new PhotoInfo(item.getId(), item.getTitle())).toList();
+		return allPhotos;
+	}
+
+	public void deletePhotoById(String id) {
+		photoRepository.deleteById(id);
 	}	
 
 }

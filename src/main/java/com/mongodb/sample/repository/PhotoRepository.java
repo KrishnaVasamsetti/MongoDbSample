@@ -6,4 +6,5 @@ import com.mongodb.sample.model.Photo;
 
 public interface PhotoRepository extends MongoRepository<Photo, String>{
 
+
 }

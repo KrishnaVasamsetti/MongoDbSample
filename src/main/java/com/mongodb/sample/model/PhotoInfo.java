@@ -1,28 +1,22 @@
 package com.mongodb.sample.model;
 
-import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
-public class Photo{
-	
+public class PhotoInfo {
 	@Id
 	private String id;
 
 	private String title;
+
 	
-	private Binary photo;
-	
-	public Photo() {
+	public PhotoInfo() {
 		
 	}
 	
-	public Photo(String id, String title, Binary photo) {
+	public PhotoInfo(String id, String title) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.photo = photo;
 	}
 	
 	public String getId() {
@@ -39,14 +33,6 @@ public class Photo{
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public Binary getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Binary photo) {
-		this.photo = photo;
 	}
 
 }
