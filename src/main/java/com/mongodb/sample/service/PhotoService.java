@@ -15,7 +15,7 @@ import com.mongodb.sample.repository.PhotoRepository;
 
 @Service
 public class PhotoService {
-	
+
 	@Autowired
 	private PhotoRepository photoRepository;
 
@@ -31,13 +31,14 @@ public class PhotoService {
 		return photo;
 	}
 
-	public List<PhotoInfo> getAllPhotoDetails() {
-		List<PhotoInfo> allPhotos = photoRepository.findAll().stream().map(item -> new PhotoInfo(item.getId(), item.getTitle())).toList();
+	public List<PhotoInfo> getAllPhotoDetails(String path) {
+		List<PhotoInfo> allPhotos = photoRepository.findAll().stream()
+				.map(item -> new PhotoInfo(item.getId(), item.getTitle(), path + "/" + item.getId())).toList();
 		return allPhotos;
 	}
 
 	public void deletePhotoById(String id) {
 		photoRepository.deleteById(id);
-	}	
+	}
 
 }

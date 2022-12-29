@@ -3,6 +3,8 @@ package com.mongodb.sample.restcontroller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -20,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mongodb.sample.model.Photo;
 import com.mongodb.sample.model.PhotoInfo;
-import com.mongodb.sample.repository.PhotoRepository;
 import com.mongodb.sample.service.PhotoService;
 
 @RestController
@@ -47,15 +48,16 @@ public class PhotoController {
 		
 	}
 	
-	@GetMapping(path = "/all")
-	public List<PhotoInfo> getAllPhotoDetails() {
-		return photoService.getAllPhotoDetails();
+	@GetMapping
+	public List<PhotoInfo> getAllPhotoDetails(HttpServletRequest request) {
+		String path = request.getRequestURL().toString();
+		return photoService.getAllPhotoDetails(path);
 	}
 	
 	@DeleteMapping(path = "/{id}")
 	public String deletePhotoById(@PathVariable String id) {
 		photoService.deletePhotoById(id);
-		return "Photo deleted sucessfully";
+		return "Photo deleted sucessfully.";
 	}
 	
 }

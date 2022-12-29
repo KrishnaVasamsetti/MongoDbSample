@@ -8,17 +8,19 @@ public class PhotoInfo {
 
 	private String title;
 
-	
+	private String photoUrl;
+
 	public PhotoInfo() {
-		
+
 	}
-	
-	public PhotoInfo(String id, String title) {
+
+	public PhotoInfo(String id, String title, String photoUrl) {
 		super();
 		this.id = id;
 		this.title = title;
+		this.photoUrl = photoUrl;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -34,5 +36,14 @@ public class PhotoInfo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
 
 }
